@@ -1,4 +1,14 @@
 [[package]]
 name = "demo_crate"
 version = "0.1.0"
+dependencies = [
+ "rust-ini 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
+[[package]]
+name = "rust-ini"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[metadata]
+"checksum rust-ini 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d74f88104648fe3d790d2f16c19c3c1964d01fb9c6ff35cfc75ea10d414ca243"
