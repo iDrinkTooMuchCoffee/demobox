@@ -3,13 +3,14 @@ use std::fs;
 extern crate ini;
 use ini::Ini;
 
+use std::option::Option;
+
 mod demo;
 mod config;
 
 fn main() {
     list_demos(config::read_cfg().to_string());
 }
-
 
 // Lists all demos found in the path.
 fn list_demos(path: String) { 
@@ -23,8 +24,10 @@ fn list_demos(path: String) {
     };
 
     for file in dir {
-        let slice = &file.unwrap().path().display().to_string()[pathlen..]; // Substring to just the filename.
-        println!("{}", slice)
+        let slice: &str = &file.unwrap().path().display().to_string()[pathlen..]; // Substring to just the filename.
+        if slice.contains(".dem") {
+            println!("{}", slice);
+        }
     }
 }
 
