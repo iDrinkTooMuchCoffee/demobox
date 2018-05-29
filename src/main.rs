@@ -9,7 +9,8 @@ mod demo;
 mod config;
 
 fn main() {
-    list_demos(config::read_cfg().to_string());
+    let path = config::read_cfg("General".to_string(), "DemoPath".to_string());
+    println!("{:?}", &path);
 }
 
 // Lists all demos found in the path.
@@ -30,4 +31,3 @@ fn list_demos(path: String) {
         }
     }
 }
-

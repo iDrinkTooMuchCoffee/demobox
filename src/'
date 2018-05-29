@@ -8,26 +8,26 @@ extern crate ini;
 use ini::Ini;
 
 // Reads from the user cfg file.
-pub fn read_cfg(_section: String, _key: String) -> String {
+pub fn read_cfg(_section: String, _key: String) -> &'static str {
     let cfg = File::open("config.ini");
     if cfg.is_err() {
         let cfg = File::create("config.ini");
         write_defaults();
     }
     let conf = Ini::load_from_file("config.ini").unwrap();
-    let mut v: String;
 
-    // There's probably a better way to do this. i.e. pattern matching
+     // iterating
     for (sec, prop) in &conf {
+        println!("Section: {:?}", sec);
         for (key, value) in prop.iter() {
-            if key == &_key {
-                v = value.to_string();
-                return v
+            if (&key == &_key) {
+                return &key
             }
         }
     }
-    v = format!("Could not find key {}", &_key);
-    return v
+    //let sect = conf.section(Some(_section.to_owned())).unwrap();
+    //let key = sect.get(&_key).to_owned().unwrap();
+    //return key;
 }
 
 // Generate default config.ini
