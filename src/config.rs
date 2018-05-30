@@ -1,6 +1,8 @@
+use std::io;
 use std::fs;
 use std::env;
 use std::fs::File;
+use std::io::ErrorKind;
 use std::io::prelude::*;
 use std::fs::OpenOptions;
 
@@ -15,19 +17,14 @@ pub fn read_cfg(_section: String, _key: String) -> String {
         write_defaults();
     }
     let conf = Ini::load_from_file("config.ini").unwrap();
-    let mut v: String;
-
-    // There's probably a better way to do this. i.e. pattern matching
     for (sec, prop) in &conf {
         for (key, value) in prop.iter() {
             if key == &_key {
-                v = value.to_string();
-                return v
+                return value.to_string();
             }
         }
     }
-    v = format!("Could not find key {}", &_key);
-    return v
+    return format!("Could not find key: {}", &_key);
 }
 
 // Generate default config.ini

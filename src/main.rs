@@ -1,9 +1,9 @@
 use std::fs;
+use std::option::Option;
 
 extern crate ini;
 use ini::Ini;
 
-use std::option::Option;
 
 mod demo;
 mod config;
