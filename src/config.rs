@@ -1,10 +1,7 @@
 use std::io;
 use std::fs;
-use std::env;
 use std::fs::File;
-use std::io::ErrorKind;
 use std::io::prelude::*;
-use std::fs::OpenOptions;
 
 extern crate ini;
 use ini::Ini;
@@ -24,10 +21,10 @@ pub fn read_cfg(_section: String, _key: String) -> String {
             }
         }
     }
-    return format!("Could not find key: {}", &_key);
+    let ret: String = format!("Trouble finding section or key. {} : {}", &_section, &_key).to_string();
+    return String::from(ret)
 }
 
-// Generate default config.ini
 pub fn write_defaults() {
     let mut conf = Ini::new();
     conf.with_section(Some(" "))

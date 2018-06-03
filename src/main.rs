@@ -1,4 +1,5 @@
 use std::fs;
+use std::env;
 use std::option::Option;
 
 extern crate ini;
@@ -9,8 +10,10 @@ mod demo;
 mod config;
 
 fn main() {
-    let path = config::read_cfg("General".to_string(), "DemoPath".to_string());
-    println!("{:?}", &path);
+    let args: Vec<String> = env::args().collect();
+    println!("{:?}", args);
+    //let path = config::read_cfg(args[1].to_string(), args[2].to_string());
+    //println!("{:?}", &path);
 }
 
 // Lists all demos found in the path.
