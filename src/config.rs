@@ -6,7 +6,6 @@ use std::io::prelude::*;
 extern crate ini;
 use ini::Ini;
 
-// Reads from the user cfg file.
 pub fn read_cfg(_section: String, _key: String) -> String {
     let cfg = File::open("config.ini");
     if cfg.is_err() {
@@ -30,7 +29,7 @@ pub fn write_defaults() {
     conf.with_section(Some(" "))
         .set("encoding", "utf-8");
     conf.with_section(Some("General".to_owned()))
-        .set("DemoPath", "/Demos")
+        .set("DemoPath", "Demos")
         .set("GameRoot", "");
     conf.with_section(Some("Groupings".to_owned()));
     conf.write_to_file("config.ini").unwrap();

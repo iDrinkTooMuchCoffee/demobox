@@ -1,6 +1,4 @@
-struct Demo {
-    title: String,
-    path: String,
+pub struct Demo {
+    pub title: String,
+    pub path:  String,
 }
-
-
