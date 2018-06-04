@@ -1,5 +1,5 @@
 [package]
-name = "demo_crate"
+name = "demobox-rs"
 version = "0.1.0"
 authors = ["ella"]
 
